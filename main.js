@@ -50,7 +50,11 @@ function showClicked(e) {
         }
     }
     equalsBtn.addEventListener('click', (e) => {
-        displayVal.innerText = operate(n1, op, n2)
+        if (n1 && op && n2) {
+            displayVal.innerText = operate(n1, op, n2)
+        } else {
+            return;
+        }
     });
 }
 
