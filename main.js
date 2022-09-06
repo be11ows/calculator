@@ -34,7 +34,7 @@ function showClicked(e) {
         if(!display) {
             n1 = 0;
             op = e.target.innerText;
-            displayVal.innerText += `${n1} ${op} `;
+            displayVal.innerText = `${n1} ${op} `;
             display = displayVal.innerText;
         } else {
             n1 = display;
@@ -80,7 +80,5 @@ function operate(n1, op, n2) {
             output = divide(n1, n2);
             break;
     }
-    // output should be displayed on the calculator screen
-    console.log(output);
     displayVal.innerText = output;
 }

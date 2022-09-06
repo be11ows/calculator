@@ -97,6 +97,22 @@ button {
     border-radius: 5px;
 }
 
+.num {
+    background-color: bisque;
+}
+
+.operator, .equals {
+    background-color: antiquewhite;
+}
+
+.delete {
+    background-color: rgb(250, 173, 242);
+}
+
+.clear {
+    background-color: rgb(240, 107, 107);
+}
+
 .extra_class {
     height: 200px;
     padding: 10px;
