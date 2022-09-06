@@ -36,30 +36,38 @@ function showClicked(e) {
             op = e.target.innerText;
             displayVal.innerText = `${n1} ${op} `;
             display = displayVal.innerText;
-        } else {
+        } else if (!op) {
             n1 = display;
             op = e.target.innerText;
             displayVal.innerText += ` ${op} `;
             display = displayVal.innerText;
+        } else if (n1 && op && n2) {
+            n1 = operate(n1, op, n2);
+            op = e.target.innerText;
+            displayVal.innerText = `${n1} ${op} `;
+            n2 = undefined;
+            display = displayVal.innerText;
         }
     }
-    equalsBtn.addEventListener('click', (e) => operate(n1, op, n2));
+    equalsBtn.addEventListener('click', (e) => {
+        displayVal.innerText = operate(n1, op, n2)
+    });
 }
 
 function add (n1, n2) {
-    return n1 + n2;
+    return +n1 + +n2;
 }
 
 function subtract(n1, n2) {
-    return n1 - n2;
+    return +n1 - +n2;
 }
 
 function multiply (n1, n2) {
-    return n1 * n2;
+    return +n1 * +n2;
 }
 
 function divide(n1, n2) {
-    return n1 / n2;
+    return +n1 / +n2;
 }
 
 function operate(n1, op, n2) {
@@ -69,16 +77,28 @@ function operate(n1, op, n2) {
     switch (op) {
         case '+':
             output = add(n1, n2);
+            n1 = output;
+            op = undefined;
+            n2 = undefined;
             break;
         case '-':
             output = subtract(n1, n2);
+            n1 = output;
+            op = undefined;
+            n2 = undefined;
             break;
         case '*':
             output = multiply(n1, n2);
+            n1 = output;
+            op = undefined;
+            n2 = undefined;
             break;
         case '/':
             output = divide(n1, n2);
+            n1 = output;
+            op = undefined;
+            n2 = undefined;
             break;
     }
-    displayVal.innerText = output;
+    return output;
 }
