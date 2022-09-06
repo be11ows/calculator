@@ -1,16 +1,49 @@
-const displayVal = document.querySelector('.output2');
-displayVal.textContent = 0;
-let n1, n2, op;
+let displayVal = document.querySelector('.output2');
+let smDisplayVal = document.querySelector('.output');
+displayVal.innerText = 0;
+let n1, op, n2, display;
 
-const numButtons = [...document.querySelectorAll('.num')];
-for(let button of numButtons) {
-    button.addEventListener('click', doThings);
-}
+const nOpButtons = [...document.querySelectorAll('.num, .operator')];
+const equalsBtn = document.querySelector('.equals');
 
-function doThings(e) {
-    let n1 = e.target.innerText;
-    displayVal.textContent = e.target.innerText;
-    console.log(n1);
+for(let button of nOpButtons) {
+    button.addEventListener('click', showClicked);
+};
+
+function showClicked(e) {
+    // NUMBER
+    if (e.target.className === 'num') {
+        if (!display && op === undefined) {
+            displayVal.innerText = e.target.innerText;
+            display = displayVal.innerText;
+        } else if (display && op === undefined) {
+            displayVal.innerText += e.target.innerText;
+            display = displayVal.innerText;
+        } else if (n1 && op && !n2) {
+            n2 = e.target.innerText;
+            displayVal.innerText += ` ${n2}`;
+            display = displayVal.innerText;
+        } else if (n1 && op && n2) {
+            n2 += e.target.innerText;
+            displayVal.innerText = `${n1} ${op} ${n2}`;
+            display = displayVal.innerText;
+        }
+    }
+    // OPERATOR
+    if (e.target.className === 'operator') {
+        if(!display) {
+            n1 = 0;
+            op = e.target.innerText;
+            displayVal.innerText += `${n1} ${op} `;
+            display = displayVal.innerText;
+        } else {
+            n1 = display;
+            op = e.target.innerText;
+            displayVal.innerText += ` ${op} `;
+            display = displayVal.innerText;
+        }
+    }
+    equalsBtn.addEventListener('click', (e) => operate(n1, op, n2));
 }
 
 function add (n1, n2) {
@@ -30,6 +63,7 @@ function divide(n1, n2) {
 }
 
 function operate(n1, op, n2) {
+    smDisplayVal.innerText = `${n1} ${op} ${n2} =`;
     let output;
     
     switch (op) {
@@ -47,21 +81,6 @@ function operate(n1, op, n2) {
             break;
     }
     // output should be displayed on the calculator screen
-    // console.log(output);
+    console.log(output);
+    displayVal.innerText = output;
 }
-
-function equals() {
-
-}
-
-function display() {
-    // Create the functions that populate the display when you click the number buttons. 
-    // You should be storing the ‘display value’ in a variable somewhere for use in the next step.
-} 
-
-// Make the calculator work! 
-// You’ll need to store the first number that is input into the calculator when a user presses an operator, 
-// and also save which operation has been chosen 
-// and then operate() on them when the user presses the “=” key.
-
-// operate(2, '/', 5);
