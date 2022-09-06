@@ -1,3 +1,18 @@
+const displayVal = document.querySelector('.output2');
+displayVal.textContent = 0;
+let n1, n2, op;
+
+const numButtons = [...document.querySelectorAll('.num')];
+for(let button of numButtons) {
+    button.addEventListener('click', doThings);
+}
+
+function doThings(e) {
+    let n1 = e.target.innerText;
+    displayVal.textContent = e.target.innerText;
+    console.log(n1);
+}
+
 function add (n1, n2) {
     return n1 + n2;
 }
@@ -32,7 +47,7 @@ function operate(n1, op, n2) {
             break;
     }
     // output should be displayed on the calculator screen
-    console.log(output);
+    // console.log(output);
 }
 
 function equals() {
@@ -49,4 +64,4 @@ function display() {
 // and also save which operation has been chosen 
 // and then operate() on them when the user presses the “=” key.
 
-operate(2, '/', 5);
+// operate(2, '/', 5);
