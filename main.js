@@ -59,17 +59,13 @@ function showClicked(e) {
     }
 
     if (e.target.className === 'decimal') {
-        console.log('decimal clicked');
-        console.log(display);
         if (n1 && op && n2) {
             n2 += '.';
             decimalBtn.disabled = true;
             displayVal.innerText = `${n1} ${op} ${n2} `;
             display = displayVal.innerText;
         } else {
-            console.log(display);
             display += '.';
-            console.log(display);
             decimalBtn.disabled = true;
             displayVal.innerText = `${display} `;
             display = displayVal.innerText;
@@ -94,11 +90,22 @@ function subtract(n1, n2) {
 }
 
 function multiply (n1, n2) {
-    return +n1 * +n2
+    let output = +n1 * +n2;
+    if(output - Math.floor(output) === 0) {
+        return output;
+    } else {
+        return output.toFixed(2);
+    }
+
 }
 
 function divide(n1, n2) {
-    return +n1 / +n2;
+    let output = +n1 / +n2;
+    if(output - Math.floor(output) === 0) {
+        return output;
+    } else {
+        return output.toFixed(2);
+    }
 }
 
 function operate(n1, op, n2) {
