@@ -6,6 +6,17 @@ let n1, op, n2, display;
 const nOpButtons = [...document.querySelectorAll('.num, .operator')];
 const equalsBtn = document.querySelector('.equals');
 const decimalBtn = document.querySelector('.decimal');
+const clearBtn = document.querySelector('.clear');
+
+clearBtn.addEventListener('click', () => {
+    display = undefined;
+    n1 = undefined;
+    n2 = undefined;
+    op = undefined;
+    displayVal.innerText = 0;
+    smDisplayVal.innerText = null;
+})
+
 decimalBtn.disabled = true;
 decimalBtn.addEventListener('click', showClicked);
 
