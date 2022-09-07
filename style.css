@@ -97,7 +97,7 @@ button {
     border-radius: 5px;
 }
 
-.num {
+.num, .decimal {
     background-color: bisque;
 }
 
