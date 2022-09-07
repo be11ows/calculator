@@ -34,7 +34,7 @@ body {
 
 .container {
     width: 500px;
-    height: 650px;
+    height: 620px;
     background-color:lightgray;
     border-radius: 10px;
     border: 1px black solid;
@@ -51,7 +51,7 @@ body {
     justify-content: flex-end;
     align-items: flex-end; */
     width: 440px;
-    height: 150px;
+    height: 100px;
     background-color: darkgray;
     border: 1px black solid;
     margin: 20px;
@@ -63,12 +63,14 @@ body {
 }
 
 .output {
-    height: 30%
+    height: 60%;
+    padding-right: 10px;
 }
 
 .output2 {
-    height: 70%;
+    height: 40%;
     font-size: 48px;
+    padding-right: 10px;
 }
 
 .bottom {
@@ -91,8 +93,8 @@ body {
 }
 
 button {
-    width: 75px;
-    height: 40px;
+    width: 90px;
+    height: 55px;
     margin-top: 10px;
     border-radius: 5px;
 }
