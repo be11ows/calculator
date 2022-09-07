@@ -36,12 +36,12 @@ function showClicked(e) {
         } else if (display && op === undefined) {
             displayVal.innerText += e.target.innerText;
             display = displayVal.innerText;
-        } else if (n1 && op && !n2) {
+        } else if ((n1 == 0 || n1) && op && !n2) {
             n2 = e.target.innerText;
             displayVal.innerText += ` ${n2}`;
             display = displayVal.innerText;
             decimalBtn.disabled = false;
-        } else if (n1 && op && n2) {
+        } else if ((n1 == 0 || n1) && op && n2) {
             n2 += e.target.innerText;
             displayVal.innerText = `${n1} ${op} ${n2}`;
             display = displayVal.innerText;
@@ -60,7 +60,7 @@ function showClicked(e) {
             displayVal.innerText += ` ${op} `;
             display = displayVal.innerText;
             decimalBtn.disabled = true;
-        } else if (n1 && op && n2) {
+        } else if ((n1 == 0 || n1) && op && n2) {
             n1 = operate(n1, op, n2);
             op = e.target.innerText;
             displayVal.innerText = `${n1} ${op} `;
